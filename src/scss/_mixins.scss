@@ -1,4 +1,5 @@
 
+@use "sass:meta";
 @mixin transform($property) {
   -webkit-transform: $property;
   -ms-transform: $property;
@@ -68,9 +69,43 @@ $transition-speed: 1s/50px;
 @mixin order($height, $selectors...) {
     @for $i from 0 to length($selectors) {
         #{nth($selectors, $i + 1)} {
-            position: aboslute;
+            position: absolute;
             height: $height;
             margin-top: $i * $height;
+        }
+    }
+}
+
+@mixin syntax-color($args...) {
+    @each $name, $color in meta.keywords($args) {
+        pre span.stx-#{$name}{
+            color: $color;
+        }
+    }   
+}
+
+@mixin button($args...) {
+    @each $prop, $val in meta.keywords($args) {
+        #{$prop}: #{$val};
+    }   
+}
+
+@mixin btn($args...) {
+  @warn "The btn() mixin is deprecated. Include button() instead.";
+  @include button($args...);
+}
+
+@mixin hover {
+    &:not([disabled]):hover {
+        @content;
+    }
+}
+
+
+@mixin media($types...) {
+    @each $type in $types {
+        @media #{$type} {
+            @content($type);
         }
     }
 }

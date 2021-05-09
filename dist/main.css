@@ -40,13 +40,41 @@ div {
 }
 
 input.name {
-  position: aboslute;
+  position: absolute;
   height: 100px;
   margin-top: 0px;
 }
 
 input.address {
-  position: aboslute;
+  position: absolute;
   height: 100px;
   margin-top: 100px;
+}
+
+div.df {
+  position: absolute;
+  height: 200px;
+  margin-top: 0px;
+}
+
+div.df {
+  position: absolute;
+  height: 200px;
+  margin-top: 200px;
+}
+
+pre span.stx-string {
+  color: #000;
+}
+
+pre span.stx-comment {
+  color: #999;
+}
+
+button {
+  color: green;
+  background-color: yellow;
+}
+button:not([disabled]):hover {
+  border: 1px solid black;
 }

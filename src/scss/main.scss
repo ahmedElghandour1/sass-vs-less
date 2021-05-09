@@ -21,3 +21,20 @@ div{
 }
  
 @include order(100px, 'input.name', 'input.address'); 
+$selectors: 'div.df', 'div.df' !default;
+@include order(200px, $selectors...);
+@include syntax-color(
+    $string: #000,
+    $comment: #999
+);
+
+button {
+    @include btn(
+        $color: green,
+        $background-color: yellow,
+    );
+    @include hover {
+        border: 1px solid black;
+    }
+}
+
