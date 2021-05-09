@@ -38,3 +38,8 @@ button {
     }
 }
 
+@include media(screen, print) using ($type) {
+    h1 {
+        
+    }
+}
