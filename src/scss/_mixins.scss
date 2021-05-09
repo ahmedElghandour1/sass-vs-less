@@ -1,0 +1,76 @@
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+
+$transition-speed: 1s/50px;
+
+@mixin move($left-start, $left-stop, $transition-speed: $transition-speed) {
+  position: absolute;
+  left: $left-start;
+  transition: left ($left-stop - $left-start) * $transition-speed;
+  &:hover {
+    left: $left-stop;
+  }
+  li {
+      color: red;
+  }
+}
+
+@mixin rtl($propery, $ltr-val, $rtl-val) {
+    #{$propery}: $ltr-val;
+    [dir=rtl] & {
+        #{$propery}: $rtl-val;
+    }
+}
+
+@mixin replace-text($image, $x: 50%, $y: 50%) {
+  text-indent: -99999em;
+  overflow: hidden;
+  text-align: left;
+
+  background: {
+    image: $image;
+    repeat: no-repeat;
+    position: $x $y;
+  }
+}
+
+@mixin padding($value, $type: all) {
+    @if $type == all {
+        padding: $value;
+    }
+    @if $type == left {
+        padding-left: $value;
+    }
+    @if $type == right {
+        padding-right: $value;
+    }
+    @if $type == bottom {
+        padding-bottom: $value;
+    }
+    @if $type == top {
+        padding-top: $value;
+    }
+    @if $type == x {
+        padding-left: $value;
+        padding-right: $value;
+    }
+     @if $type == y {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+}
+
+@mixin order($height, $selectors...) {
+    @for $i from 0 to length($selectors) {
+        #{nth($selectors, $i + 1)} {
+            position: aboslute;
+            height: $height;
+            margin-top: $i * $height;
+        }
+    }
+}

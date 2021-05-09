@@ -1,0 +1,52 @@
+div {
+  color: blue;
+}
+
+div {
+  color: red;
+  -webkit-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+  background: green;
+  width: 210vw;
+  height: 50px;
+  padding: 10px;
+}
+div .slider {
+  position: absolute;
+  left: 10px;
+  transition: left 2.2s;
+}
+div .slider:hover {
+  left: 120px;
+}
+div .slider li {
+  color: red;
+}
+
+div {
+  float: left;
+  text-indent: -99999em;
+  overflow: hidden;
+  text-align: left;
+  background-image: "dsgsdg";
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+[dir=rtl] div {
+  float: right;
+}
+
+input.name {
+  position: aboslute;
+  height: 100px;
+  margin-top: 0px;
+}
+
+input.address {
+  position: aboslute;
+  height: 100px;
+  margin-top: 100px;
+}

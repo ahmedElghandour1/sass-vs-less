@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'mixins';
+
+
+div{
+    color: $color;
+    @include transform(rotate(-10deg));
+    background: green;
+    width: 600px / 10px * 3.5vw;
+    height: 10px * 10 / 2;
+    @include padding(10px);
+    .slider {
+    @include move(10px, 120px);
+    }
+}
+
+div{
+    @include rtl(float, left, right);
+    @include replace-text('dsgsdg');
+    @include padding(10px, x);
+}
+ 
+@include order(100px, 'input.name', 'input.address'); 
