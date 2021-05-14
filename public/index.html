@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,117 @@
     <title>SCSS vs LESS</title>
     <script src="./../dist/main.js" defer></script>
 </head>
+
 <body>
-    <div>hi</div>
+    <form style="
+        margin-top: 100px;
+        max-width: 700px;
+        margin-left: auto; 
+        margin-right: auto" class="d-flex">
+        <h2>Text Inputs:</h2>
+        <h3>Medium</h3>
+        <div class="form-group">
+            <label for="">MEDIUM INPUT</label>
+            <input placeholder="Placeholder" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label for="">REQUIRED MEDIUM INPUT</label>
+            <input required value="Value" placeholder="Placeholder" class="form-control" type="text">
+            <span class="required-icon"></span>
+        </div>
+        <h3>Large</h3>
+        <div class="form-group">
+            <label for="">LARGE INPUT</label>
+            <input placeholder="Placeholder" class="form-control lg" type="text">
+        </div>
+        <div class="form-group">
+            <label for="">REQUIRED LARGE INPUT</label>
+            <input required value="Value" placeholder="Placeholder" class="form-control lg" type="text">
+            <span class="required-icon"></span>
+        </div>
+        <h3>Small</h3>
+        <div class="form-group">
+            <label for="">SMALL INPUT</label>
+            <input placeholder="Placeholder" class="form-control sm" type="text">
+        </div>
+        <div class="form-group">
+            <label for="">REQUIRED SMALL INPUT</label>
+            <input required value="Value" placeholder="Placeholder" class="form-control sm" type="text">
+            <span class="required-icon"></span>
+        </div>
+        <hr>
+        <h2>Togglers</h2>
+        <h3>radio elements</h3>
+        <div class="form-group">
+            <div class="form-control toggle">
+                <input name="radio" id="label1" type="radio">
+                <label for="label">
+                    Label
+                </label>
+            </div>
+            <div class="form-control toggle">
+                <input name="radio" id="label2" type="radio">
+                <label for="label2">
+                    Label
+                </label>
+            </div>
+        </div>
+        <h3> inline radio elements</h3>
+        <div class="form-group">
+            <div class="form-control toggle toggle-inline">
+                <input name="in-radio" id="label3" type="radio">
+                <label for="label3">
+                    Label
+                </label>
+            </div>
+            <div class="form-control toggle toggle-inline">
+                <input name="in-radio" id="label4" type="radio">
+                <label for="label4">
+                    Label
+                </label>
+            </div>
+        </div>
+        <hr>
+        <h2>Number Inputs:</h2>
+        <h3>Counter input</h3>
+        <div data-target='counter' style="width: 150px;" class="form-group counter">
+            <span data-target='decrement' class="dec">
+                <span class="icon--minus">-</span>
+            </span>
+            <span class="custom-control">
+                <input class="form-control" data-count-by='1' data-target='counter-input' value="1" max="10" min="1"
+                    type="number">
+            </span>
+            <span data-target='increment' class="inc">
+                <span class="icon--plus">+</span>
+            </span>
+        </div>
+        <h3>Currency input</h3>
+        <div data-target="counter" data-type="currency" style="width: 200px;" class="form-group counter">
+            <span data-target="decrement" class="dec">
+                <span class="icon--minus">-</span>
+            </span>
+            <span class="custom-control">
+                <span class="custom-control-icon">
+                    <span class="icon--dollar">$</span>
+                </span>
+                <input class="form-control" data-count-by="1" data-target='counter-input' value="1" max="10" min="1"
+                    type="number">
+            </span>
+            <span data-target='increment' class="inc">
+                <span class="icon--plus">+</span>
+            </span>
+        </div>
+        <h2>Dropdown Input:</h2>
+        
+        <div  class="form-group">
+            <select onchange="alert('hhhh')" select-dropdown="social" name="social" readonly>
+                <option value="fb">Facebook</option>
+                <option value="yt">Youtube</option>
+                <option value="tw">Twitter</option>
+            </select>
+        </div>
+    </form>
 </body>
+
 </html>

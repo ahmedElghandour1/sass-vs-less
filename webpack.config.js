@@ -29,6 +29,21 @@ module.exports = (env, argv) => {
           test: /\.less$/i,
           use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
         },
+        {
+          test: /\.(png|svg|jpg|gif)(\?.*)?$/,
+          use: [
+              {
+                  loader: "file-loader",
+                  options: {
+                      // publicPath:
+                      //     "/",
+                      outputPath: "",
+                      name: "[name].[ext]",
+                      esModule: false,
+                  },
+              },
+          ],
+      },
       ],
     },
     plugins: [
