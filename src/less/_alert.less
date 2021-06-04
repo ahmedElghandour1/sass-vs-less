@@ -1,0 +1,99 @@
+.alert{
+    // border: 2px solid #FECD1A;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 6px;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0px 3px 6px #00000029;
+    .alert-link{
+        border: 1px solid #FFFFFFB3;
+        border-radius: 6px;
+        color: #FFFFFFB3;
+        padding: 5px 12px;
+        align-self: center;
+        margin-right: 13px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .close {
+        color: #FFFFFFB3;
+        font-size: 10px;
+        margin-right: 10px;
+        // margin-right: 3px;
+        align-self: center;
+        cursor: pointer;
+        margin-left: auto;
+    }
+    .alert-icon {
+        padding: 0 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        font-size: 18px;
+        border-radius: 0  6px 6px 0;
+        .alert-warning& {
+            background-color: #FEDC1A;
+        }
+        .alert-error& {
+            background-color: #CC0000;
+        }
+        .alert-success& {
+            background-color: #A4E822;
+        }
+    }
+    .alert-message {
+        font-size: 15px;
+        font-weight: 500;
+        padding: 16px 0;
+        margin-left: 10px;
+        margin-right: 10px;
+        .alert-warning& {
+            color: #FEDC1A;
+        }
+        .alert-success& {
+            color: #A4E822;
+        }
+    }
+    &.alert-warning{
+        border-color: #FEDC1A;
+
+    }
+    &.alert-error {
+        border-color: #CC0000;
+    }
+    &.alert-success {
+        border-color: #A4E822;
+    }
+
+    &.alert-sm {
+        .alert-icon {
+            padding: 0;
+            padding-left: 10px; 
+            font-size: 10px;
+            background: none;
+        }
+        .alert-message {
+            padding: 6px 0;
+            font-size: 13px;
+        }
+        .alert-message, .alert-icon {
+            .alert-warning& {
+                color: #FEDC1A;
+             }
+             .alert-error& {
+                color: #CC0000;
+             }
+             .alert-success& {
+                color: #A4E822;
+             }
+        }
+    }
+    &.fadding-out {
+        transition: opacity 10.3s;
+        opacity: 0;
+    }
+}
+

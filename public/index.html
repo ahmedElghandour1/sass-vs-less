@@ -81,8 +81,8 @@
         </div>
         <hr>
         <h2>Number Inputs:</h2>
-        <h3>Counter input</h3>
-        <div data-target='counter' style="width: 150px;" class="form-group counter">
+        <h3>Counter input (auto initiation)</h3>
+        <div data-target='counter' data-init="true" style="width: 150px;" class="form-group counter">
             <span data-target='decrement' class="dec">
                 <span class="icon--minus">-</span>
             </span>
@@ -94,8 +94,24 @@
                 <span class="icon--plus">+</span>
             </span>
         </div>
-        <h3>Currency input</h3>
-        <div data-target="counter" data-type="currency" style="width: 200px;" class="form-group counter">
+        <h3>Currency input (auto initiation)</h3>
+        <div data-target="counter" data-init="true"  data-type="currency" style="width: 200px;" class="form-group counter">
+            <span data-target="decrement" class="dec">
+                <span class="icon--minus">-</span>
+            </span>
+            <span class="custom-control">
+                <span class="custom-control-icon">
+                    <span class="icon--dollar">$</span>
+                </span>
+                <input class="form-control" data-count-by=".1" data-target='counter-input' value="1" max="10" min="1"
+                    type="number">
+            </span>
+            <span data-target='increment' class="inc">
+                <span class="icon--plus">+</span>
+            </span>
+        </div>
+        <h3>Currency input (initiate with helper function!)</h3>
+        <div data-target="counter"  id="test-counter" data-type="currency" style="width: 200px;" class="form-group counter">
             <span data-target="decrement" class="dec">
                 <span class="icon--minus">-</span>
             </span>
@@ -104,15 +120,15 @@
                     <span class="icon--dollar">$</span>
                 </span>
                 <input class="form-control" data-count-by="1" data-target='counter-input' value="1" max="10" min="1"
-                    type="number">
+                    >
             </span>
             <span data-target='increment' class="inc">
                 <span class="icon--plus">+</span>
             </span>
         </div>
         <h2>Dropdown Input:</h2>
-        
-        <div  class="form-group">
+
+        <div class="form-group">
             <select onchange="alert('hhhh')" select-dropdown="social" name="social" readonly>
                 <option value="fb">Facebook</option>
                 <option value="yt">Youtube</option>
@@ -120,6 +136,82 @@
             </select>
         </div>
     </form>
+
+
+
+    <div style="
+        margin-top: 100px;
+        max-width: 700px;
+        margin-left: auto; 
+        margin-right: auto">
+        <!-- warning -->
+        <div data-alert class="alert alert-warning">
+            <span class="alert-icon">
+                <span class="ico--4fdg">$</span>
+            </span>
+            <div class="alert-message">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur obcaecati officia quisquam laboriosam
+            </div>
+            <a class="alert-link" href="">Button</a>
+            <span data-type="close" class="close">x</span>
+        </div>
+
+        <br>
+
+        <div data-alert class="alert alert-error">
+            <span class="alert-icon">
+                <span class="ico--4fdg">$</span>
+            </span>
+            <div class="alert-message">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur obcaecati officia quisquam laboriosam
+                reiciendis magnam qu
+            </div>
+            <a class="alert-link" href="">Button</a>
+            <span data-type="close" class="close">x</span>
+        </div>
+
+        <br>
+
+
+        <div data-alert class="alert alert-success">
+            <span class="alert-icon">
+                <span class="ico--4fdg">$</span>
+            </span>
+            <div class="alert-message">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur obcaecati officia quisquam laboriosam
+                reiciendis magnam quo simili
+            </div>
+            <a class="alert-link" href="">Button</a>
+            <span data-type="close" class="close">x</span>
+        </div>
+
+        <br>
+
+        <div data-alert class="alert alert-warning alert-sm">
+            <span class="alert-icon">
+                <span class="ico--4fdg">$</span>
+            </span>
+            <div class="alert-message">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur obcaecati officia quisquam.
+            </div>
+            <span data-type="close" class="close">x</span>
+        </div>
+    </div>
+    <script>
+        (function () {
+            const alerts = document.querySelectorAll('[data-alert]');
+            alerts?.forEach((alert) => {
+                const closeBtn = alert.querySelector('[data-type=close]');
+                console.log(closeBtn);
+                closeBtn?.addEventListener("click", () => {
+                    alert.classList.add('fadding-out');
+                }, { once: true });
+                alert.addEventListener('transitionend', () => {
+                    alert.remove();
+                }, { once: true });
+            });
+        })()
+    </script>
 </body>
 
 </html>

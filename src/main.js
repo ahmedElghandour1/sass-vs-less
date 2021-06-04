@@ -1,31 +1,40 @@
 import "./less/main.less";
 // import "./scss/main.scss";
 
+
 /* counter
 -------------------------------- */
 (() => {
-    const counters = document.querySelectorAll('[data-target=counter]');
-    counters.forEach((counterContainer) => {
-        const inc = counterContainer.querySelector('[data-target=increment]'),
-            dec = counterContainer.querySelector('[data-target=decrement]'),
-            input = counterContainer.querySelector('[data-target=counter-input]'),
-            isCurrency = counterContainer.getAttribute('data-type') === 'currency';
-        let min, max;
+    window.initiateCounter = function(selector, options) {
+        const container = document.querySelector(selector);
+        if(container) {
+            init(container, options)
+        }
+    }
+
+    const init = (container, {comma = '.',step, min, max, isCurrency } = {}) => {
+        const inc = container.querySelector('[data-target=increment]'),
+            dec = container.querySelector('[data-target=decrement]'),
+            input = container.querySelector('[data-target=counter-input]'),
+            _isCurrency = isCurrency ||container.getAttribute('data-type') === 'currency';
+        let _min, _max;
         if (!input) {
             return;
         }
-        min = parseFloat(input.min);
-        max = parseFloat(input.max);
-        const countBy = +input.getAttribute('data-count-by') || 1;
+        _min = min || parseFloat(input.min);
+        _max = max || parseFloat(input.max);
+        const countBy = +step || +input.getAttribute('data-count-by') || 1;
         const handleButtonStatus = () => {
-            +input.value == min ? dec.setAttribute('disabled', true) : dec.removeAttribute('disabled');
-            +input.value == max ? inc.setAttribute('disabled', true) : inc.removeAttribute('disabled');
+            +input.value == _min ? dec.setAttribute('disabled', true) : dec.removeAttribute('disabled');
+            +input.value == _max ? inc.setAttribute('disabled', true) : inc.removeAttribute('disabled');
         }
         const setInputValue = (input, count = 0) => {
             let val = +input + count;
-            if (isCurrency) {
+            val = parseFloat(val);
+            console.log(val)
+            if (_isCurrency) {
                 if (parseInt(val.toString()) === val) {
-                    val = `${val}.00`;
+                    val = `${val}${comma}00`;
                 }
             }
             return val;
@@ -33,32 +42,43 @@ import "./less/main.less";
         handleButtonStatus();
         input.value = setInputValue(input.value);
         inc?.addEventListener('click', () => {
-            if (+input.value + countBy <= max) {
+            if (+input.value + countBy <= _max) {
                 input.value = setInputValue(input.value, countBy);
             } else {
-                input.value = setInputValue(max);
+                input.value = setInputValue(_max);
             }
             handleButtonStatus();
         });
 
         dec?.addEventListener('click', () => {
-            if (+input.value - countBy >= min) {
+            if (+input.value - countBy >= _min) {
                 input.value = setInputValue(input.value, -countBy);
             } else {
-                input.value = setInputValue(min);
+                input.value = setInputValue(_min);
 
             }
             handleButtonStatus();
         });
 
         input?.addEventListener('input', () => {
-            if (+input.value < min) input.value = min;
-            if (+input.value > max) input.value = max;
+            if (+input.value < _min) input.value = _min;
+            if (+input.value > _max) input.value = _max;
             handleButtonStatus();
         });
+    }
+    const counters = document.querySelectorAll('[data-target=counter][data-init=true]');
+    counters.forEach((counterContainer) => {
+        init(counterContainer);
     })
 })();
 
+initiateCounter('#test-counter', {
+    comma: ".",
+    min: 100,
+    max: 220,
+    step: 10,
+    isCurrency: true
+});
 
 (() => {
     const selectDropdowns = document.querySelectorAll('select[select-dropdown]');
@@ -119,7 +139,7 @@ import "./less/main.less";
 
         window.addEventListener('click', (e) => {
             const target = e.target;
-            if(!target.closest(`[data-select-dropdown="${selectInstance.getAttribute('data-select-dropdown')}"]`)) {
+            if (!target.closest(`[data-select-dropdown="${selectInstance.getAttribute('data-select-dropdown')}"]`)) {
                 dropdownWrapper.classList.remove('active');
             }
         });

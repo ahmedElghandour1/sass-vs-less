@@ -1,4 +1,5 @@
 @import '_forms.less';
+@import '_alert.less';
 body {
     background-color:  #262626;
     margin: 0;
@@ -11,4 +12,51 @@ body {
 *{
     box-sizing: border-box;
 
+}
+
+
+
+/* Verification Page
+   -----------------------------------------*/
+
+
+// C:\Users\appmea\Desktop\CMS\CMS\Content\css\lopocacom\areas-root\
+
+
+@import "../../_theme.less";
+
+
+
+.verification--page {
+    .kyc-container, .utility-bill-container, .proof-of-payment-container {
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: black;
+    }
+}
+
+@import "../_theme.less";
+
+/* Register Page
+   -----------------------------------------*/
+
+.register-user {
+    .form-group {
+        display: block;
+    }
+
+    .has-success .form-control-feedback {
+        border-color: @color-success !important;
+        color: @color-success !important;
+    }
+}
+
+
+.d-flex {
+    display: flex;
+
+    &.x-y-center {
+        align-items: center;
+        justify-content: center;
+    }
 }
