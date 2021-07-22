@@ -1,7 +1,0 @@
-@use "sass:map";
-
-$color: red !default;
- $font-weights: ("regular": 400, "medium": 500, "bold": 700);
-
-
-@debug map.get($font-weights, "medium");
